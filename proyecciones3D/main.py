@@ -54,15 +54,15 @@ class App(arcade.Window):
         self.cube.rotate(0.3, "y")
         self.cube.rotate(0.1, "z")
     
-    #def on_update(self, delta_time: float):
-    #    self.cube.rotate(delta_time, "x")
-    #    self.cube.rotate(delta_time, "y")
-    #    self.cube.rotate(delta_time, "z")
-    #    pass
+    def on_update(self, delta_time: float):
+        self.cube.rotate(delta_time, "x")
+        #self.cube.rotate(delta_time, "y")
+        #self.cube.rotate(delta_time, "z")
+        pass
 
-    def on_mouse_motion(self, x: int, y: int, dx: int, dy: int):
-        self.cube.rotate(dx*0.01,"y")
-        self.cube.rotate(-dy*0.01,"x")
+    #def on_mouse_motion(self, x: int, y: int, dx: int, dy: int):
+    #    self.cube.rotate(dx*0.01,"y")
+    #   self.cube.rotate(-dy*0.01,"x")
 
     def on_draw(self):
         arcade.start_render()
