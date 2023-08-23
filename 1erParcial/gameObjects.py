@@ -25,8 +25,8 @@ class Circle:
 #-------------------------------------------------------------------------------------------------
 
 class Paddle:
-    def __init__(self,x, y,color,limit):#add width
-        self.x=x+6
+    def __init__(self,x, y,color,limit,isLeft):#add width
+        self.x=x
         self.y=y
         self.color=color
         self.speed=0
@@ -35,6 +35,7 @@ class Paddle:
         self.padHeight=100
         self.padWidth=30
         self.limit=limit
+        self.isLeft=isLeft
 
         self.rightUP=[self.x+self.padWidth,self.y+self.padHeight]
         self.rightDown=[self.x+self.padWidth,self.y]
@@ -62,17 +63,33 @@ class Paddle:
         
         
     
-    def colissionCircle(self,circle: Circle):
+    def colissionCircle(self,circle: Circle,newColor):
         #print(self.rightDown[0], circle.left)
 
         if self.rightDown[0] >= circle.left and (circle.y>=self.rightDown[1] and circle.y<=self.rightUP[1]):
-            #print("choque"+str(circle.left)+", "+str(circle.y))
             circle.speed_x*= -1
             
+            if self.isLeft and self.rightDown[0] >= circle.left:
+                circle.color=newColor()
+                #self.update_speed(circle)
+                circle.speed_x+=1
+                print(circle.speed_x)
+                
+                
+    
 
         if self.leftDown[0] >= circle.right and (circle.y>=self.leftDown[1] and circle.y<=self.leftUp[1]):
-            #print("choque"+str(circle.left)+", "+str(circle.y))
             circle.speed_x*= -1
+            
+  
+        if self.leftDown[0] == circle.right-1:
+            circle.color=newColor()
+            #self.update_speed(circle)
+            circle.speed_x-=1
+            print(circle.speed_x)
+
+        
+
             
 
 
