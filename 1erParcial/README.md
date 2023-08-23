@@ -2,7 +2,8 @@
 ###### Dylan Jitton (62732)
 ###### Primer Parcial, Infografía
 Bienvenido al Repositorio de Pong recreado con Arcade, la herramienta gráfica de Python!
-![image](https://github.com/dylanjitt/InfografiaUPB2023/assets/101950765/1bf0b479-6c50-4e21-b4b2-7ae7404909b9)
+![image](https://github.com/dylanjitt/InfografiaUPB2023/assets/101950765/8c2640ab-1a09-4b07-bc56-d52a1f691703)
+
 
 para poder jugar necesitas tener instalado 2 cosas simples:
 ### - Visual Studio Code
