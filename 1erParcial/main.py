@@ -7,6 +7,8 @@ SCREEN_WIDTH=800
 SCREEN_HEIGHT=600
 TITLE="Pong xd"
 
+#Para modificar el limite de goles de la partida!
+WINNER_LIMIT=1
 
 
 class PongWindow(arcade.Window):
@@ -24,15 +26,20 @@ class PongWindow(arcade.Window):
         self.p1=Paddle(0,(SCREEN_HEIGHT/2)-50,self.color1,SCREEN_HEIGHT)
         self.p2=Paddle(SCREEN_WIDTH-36,(SCREEN_HEIGHT/2)-50,self.color2,SCREEN_HEIGHT)
 
-        self.points_P1=arcade.Text(str(self.p1.puntos),SCREEN_WIDTH*(1/4),50,self.color1,20,10,"left","arial",True,False,"left","baseline",False)
-        self.points_P2=arcade.Text(str(self.p2.puntos),SCREEN_WIDTH*(3/4),50,self.color2,20,10,"left","arial",True,False,"left","baseline",False)
+        self.points_P1=arcade.Text(str(self.p1.puntos),SCREEN_WIDTH*(1/4),50,self.color1,30,10,"left","arial",True,False,"left","baseline",False)
+        self.points_P2=arcade.Text(str(self.p2.puntos),SCREEN_WIDTH*(3/4),50,self.color2,30,10,"left","arial",True,False,"left","baseline",False)
 
         self.moving=False
         self.START=arcade.Text("Presiona SPACE para comenzar",SCREEN_WIDTH*2/5,SCREEN_HEIGHT*(2/3),arcade.color.WHITE,40,10,"center","arial",True,False,"center","baseline",False)
         self.textStart=True
 
         self.PAUSE=arcade.Text("PAUSA",SCREEN_WIDTH*(1.2/3),SCREEN_HEIGHT/2,arcade.color.WHITE,40,10,"center","arial",True,False,"center","baseline",False)
-        self.winnerLimit=1
+
+        self.gameOver=False
+
+        self.ganador=arcade.Text("Ganador:",SCREEN_WIDTH*(1/4),SCREEN_HEIGHT/2,arcade.color.WHITE,40,10,"center","arial",True,False,"center","baseline",False)
+        self.g1=arcade.Text("J1:",SCREEN_WIDTH*(2.5/4),SCREEN_HEIGHT/2,self.color1,40,10,"center","arial",True,False,"center","baseline",False)
+        self.g2=arcade.Text("J2:",SCREEN_WIDTH*(2.5/4),SCREEN_HEIGHT/2,self.color2,40,10,"center","arial",True,False,"center","baseline",False)
 
 
     def on_draw(self):
@@ -49,10 +56,21 @@ class PongWindow(arcade.Window):
         if self.moving==False:
             if self.textStart==False:
                 self.PAUSE.draw()
+        
+        if self.p1.puntos==WINNER_LIMIT or self.p2.puntos==WINNER_LIMIT:
+            self.gameOver=True
+            self.ganador.draw()
+            if self.p1.puntos==WINNER_LIMIT:
+                self.g1.draw()
+            if self.p2.puntos==WINNER_LIMIT:
+                self.g2.draw()
+
     
     def on_update(self, delta_time: float):
         if self.moving==True:
-            self.ball.update(delta_time)
+            if self.gameOver==False:
+                self.ball.update(delta_time)
+                
             self.p1.update(delta_time)
             self.p2.update(delta_time)
         
@@ -90,24 +108,25 @@ class PongWindow(arcade.Window):
     
     def on_key_press(self, symbol: int, modifiers: int):
         
-        if symbol== arcade.key.SPACE:
-            if self.moving == True:
-                self.moving = False
-            else:
-                self.moving = True
+        if self.gameOver==False:
+            if symbol== arcade.key.SPACE:
+                if self.moving == True:
+                    self.moving = False
+                else:
+                    self.moving = True
 
-            if self.textStart== True:
-                self.textStart=False
+                if self.textStart== True:
+                    self.textStart=False
 
-        if symbol == arcade.key.W:
-            self.p1.speed=self.pad_speed  
-        if symbol == arcade.key.S:
-            self.p1.speed=-self.pad_speed
+            if symbol == arcade.key.W:
+                self.p1.speed=self.pad_speed  
+            if symbol == arcade.key.S:
+                self.p1.speed=-self.pad_speed
         
-        if symbol == arcade.key.UP:
-            self.p2.speed=self.pad_speed
-        if symbol == arcade.key.DOWN:
-            self.p2.speed=-self.pad_speed
+            if symbol == arcade.key.UP:
+                self.p2.speed=self.pad_speed
+            if symbol == arcade.key.DOWN:
+                self.p2.speed=-self.pad_speed
 
     def on_key_release(self, symbol: int, modifiers: int):
         if symbol in (arcade.key.UP,arcade.key.DOWN):
