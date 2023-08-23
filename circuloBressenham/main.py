@@ -11,7 +11,7 @@ class BresenhamWindow(arcade.Window):
         self.pixel_size = 10
         self.xc = 20
         self.yc = 20
-        self.r = 20
+        self.r = 5
         self.circle_color = arcade.color.RED_DEVIL
 
         self.speed=10
