@@ -8,7 +8,7 @@ SCREEN_HEIGHT=600
 TITLE="Pong xd"
 
 #Para modificar el limite de goles de la partida!
-WINNER_LIMIT=1
+WINNER_LIMIT=10
 
 
 def get_random_color():
@@ -42,7 +42,7 @@ class PongWindow(arcade.Window):
         self.points_P2=arcade.Text(str(self.p2.puntos),SCREEN_WIDTH*(3/4),50,self.color2,30,10,"left","arial",True,False,"left","baseline",False)
 
         self.moving=False
-        self.START=arcade.Text("Presiona SPACE para comenzar",SCREEN_WIDTH*2/5,SCREEN_HEIGHT*(2/3),arcade.color.WHITE,40,10,"center","arial",True,False,"center","baseline",False)
+        self.START=arcade.Text("Presiona SPACE para comenzar",SCREEN_WIDTH*2/4,SCREEN_HEIGHT*(2/3),arcade.color.WHITE,40,300,"center","arial",True,False,"center","baseline",False)
         self.textStart=True
 
         self.PAUSE=arcade.Text("PAUSA",SCREEN_WIDTH*(1.2/3),SCREEN_HEIGHT/2,arcade.color.WHITE,40,10,"center","arial",True,False,"center","baseline",False)
