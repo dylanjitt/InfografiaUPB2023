@@ -8,7 +8,7 @@ SCREEN_HEIGHT=600
 TITLE="Pong xd"
 
 #Para modificar el limite de goles de la partida!
-WINNER_LIMIT=1
+WINNER_LIMIT=5
 
 
 class PongWindow(arcade.Window):
@@ -44,7 +44,9 @@ class PongWindow(arcade.Window):
 
     def on_draw(self):
         arcade.start_render()
-        self.ball.draw()
+        if self.gameOver==False:
+            self.ball.draw()
+
         self.p1.draw()
         self.p2.draw()
 
