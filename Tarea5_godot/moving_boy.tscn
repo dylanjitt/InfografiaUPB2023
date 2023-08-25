@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1fkn2jfqhml3"]
+
+[ext_resource type="Script" path="res://movingBoy.gd" id="1_rk4np"]
+[ext_resource type="Texture2D" uid="uid://ecb0jlwetotv" path="res://icon.svg" id="1_rxvk8"]
+
+[node name="MovingBoy" type="Node2D"]
+position = Vector2(-1, 1)
+script = ExtResource("1_rk4np")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rxvk8")

@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8uqc4qq5x5er"]
+
+[ext_resource type="PackedScene" uid="uid://b1fkn2jfqhml3" path="res://moving_boy.tscn" id="1_edymi"]
+[ext_resource type="Texture2D" uid="uid://bgp4nitjbenou" path="res://Right-Arrow-Transparent-Background.png" id="2_4w4oh"]
+[ext_resource type="Texture2D" uid="uid://ciho2ygqk3tt7" path="res://arrow_turn_right.png" id="3_5l45v"]
+[ext_resource type="Texture2D" uid="uid://nm4isobe565w" path="res://arrow_turn_left.png" id="4_som8l"]
+
+[node name="main" type="Node2D"]
+
+[node name="MovingBoy" parent="." instance=ExtResource("1_edymi")]
+position = Vector2(564, 252)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 289.0
+offset_top = 437.0
+offset_right = 809.0
+offset_bottom = 957.0
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("2_4w4oh")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 176.0
+offset_top = 539.0
+offset_right = 696.0
+offset_bottom = 1059.0
+rotation = 3.14159
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("2_4w4oh")
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 182.0
+offset_top = 441.0
+offset_right = 702.0
+offset_bottom = 961.0
+rotation = 4.71239
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("2_4w4oh")
+
+[node name="Button4" type="Button" parent="."]
+offset_left = 283.0
+offset_top = 537.0
+offset_right = 803.0
+offset_bottom = 1057.0
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("2_4w4oh")
+
+[node name="Button5" type="Button" parent="."]
+offset_left = 980.0
+offset_top = 485.0
+offset_right = 1052.0
+offset_bottom = 557.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("3_5l45v")
+
+[node name="Button6" type="Button" parent="."]
+offset_left = 816.0
+offset_top = 483.0
+offset_right = 888.0
+offset_bottom = 555.0
+scale = Vector2(1.5, 1.5)
+icon = ExtResource("4_som8l")
+
+[connection signal="button_down" from="Button" to="MovingBoy" method="_on_button_button_right"]
+[connection signal="button_up" from="Button" to="MovingBoy" method="_stop_x"]
+[connection signal="button_down" from="Button2" to="MovingBoy" method="_on_button_button_left"]
+[connection signal="button_up" from="Button2" to="MovingBoy" method="_stop_x"]
+[connection signal="button_down" from="Button3" to="MovingBoy" method="_on_button_button_up"]
+[connection signal="button_up" from="Button3" to="MovingBoy" method="_stop_y"]
+[connection signal="button_down" from="Button4" to="MovingBoy" method="_on_button_button_down"]
+[connection signal="button_up" from="Button4" to="MovingBoy" method="_stop_y"]
+[connection signal="button_down" from="Button5" to="MovingBoy" method="_turn_right"]
+[connection signal="button_up" from="Button5" to="MovingBoy" method="_stop_turn"]
+[connection signal="button_down" from="Button6" to="MovingBoy" method="_turn_left"]
+[connection signal="button_up" from="Button6" to="MovingBoy" method="_stop_turn"]
